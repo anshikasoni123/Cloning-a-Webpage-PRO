@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    <script>
+       let html1;
+       let html2;
+       $(document).ready(function(){
+        $.ajax({
+            url:"http://ec2-3-108-196-161.ap-south-1.compute.amazonaws.com/",
+            success:function(data){
+                html1 = data
+                display_html()
+                login()
+            }
+        })
+       })
+
+       function display_html(){
+            $("body").append(html1)
+       }
+      
+       function login(){
+        $(".login-button").click(function(){
+            let data={
+                "email":$("#email").val(),
+                "password":$("#password").val()
+            }
+            console.log(data)
+            $.ajax({
+                url:"http://ec2-3-108-196-161.ap-south-1.compute.amazonaws.com/dashboard",
+                success:function(data){
+                    html2 = data
+                    $("body").append(html2)
+                }
+            })
+        })
+       }
+
+    
+    </script>
+</body>
+</html>
