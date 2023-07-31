@@ -33,10 +33,15 @@
                 url:"http://ec2-3-108-196-161.ap-south-1.compute.amazonaws.com/dashboard",
                 success:function(data){
                     html2 = data
-                    $("body").append(html2)
+                    display_html2()
                 }
             })
         })
+       }
+       function display_html2(){
+        $("body").append(html2)
+        $("#left-section").remove()
+        $("#right-section").remove()
        }
 
     
